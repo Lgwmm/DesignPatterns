@@ -1,4 +1,4 @@
-package com.ligang.designpatterns;
+package com.ligang.designpatterns.singleton;
 
 /**
  * 饿汉式加载，还没用到，先加载到内存

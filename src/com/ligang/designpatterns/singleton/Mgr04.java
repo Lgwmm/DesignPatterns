@@ -1,19 +1,21 @@
-package com.ligang.designpatterns;
+package com.ligang.designpatterns.singleton;
 
 /**
  * lazy loading
  * 懒汉式加载
- * 最然也做到了单例加载，但是存在线程安全问题
+ * 再方法加锁虽然实现了只有一个实例，但是每次获取对象时都要去尝试获取锁，那么会降低效率；
+ *
+ * volatile：禁止指令重排
  */
-public class Mgr03 {
+public class Mgr04 {
 
-    private static Mgr03 INSTANCE;
+    private static volatile Mgr04 INSTANCE;
 
-    Mgr03(){
+    private Mgr04(){
 
     }
 
-    public static Mgr03 getInstance(){
+    public static synchronized Mgr04 getInstance(){
         if(INSTANCE==null){
 
             try {
@@ -21,7 +23,7 @@ public class Mgr03 {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            INSTANCE = new Mgr03();
+            INSTANCE = new Mgr04();
         }
         return INSTANCE;
     }
@@ -37,7 +39,7 @@ public class Mgr03 {
     public static void main(String[] args) {
         for (int i = 0; i <100; i++) {
             new Thread(()->{
-                System.out.println(Mgr03.getInstance().hashCode());
+                System.out.println(Mgr04.getInstance().hashCode());
             }).start();
         }
     }

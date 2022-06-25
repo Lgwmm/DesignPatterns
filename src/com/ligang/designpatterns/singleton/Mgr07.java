@@ -1,4 +1,4 @@
-package com.ligang.designpatterns;
+package com.ligang.designpatterns.singleton;
 
 /**
  * 完美单例之一:静态内部类方式，外部类加载时，内部类不加载

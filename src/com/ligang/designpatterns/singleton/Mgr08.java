@@ -1,4 +1,4 @@
-package com.ligang.designpatterns;
+package com.ligang.designpatterns.singleton;
 
 /**
  * 枚举单例
